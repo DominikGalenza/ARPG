@@ -2,6 +2,8 @@
 
 
 #include "Characters/ARPGBaseCharacter.h"
+#include "AbilitySystem/ARPGAbilitySystemComponent.h"
+#include "AbilitySystem/ARPGAttributeSet.h"
 
 // Sets default values
 AARPGBaseCharacter::AARPGBaseCharacter()
@@ -11,4 +13,22 @@ AARPGBaseCharacter::AARPGBaseCharacter()
 	PrimaryActorTick.bStartWithTickEnabled = false;
 
 	GetMesh()->bReceivesDecals = false;
+
+	ARPGAbilitySystemComponent = CreateDefaultSubobject<UARPGAbilitySystemComponent>(TEXT("ARPGAbilitySystemComponent"));
+	ARPGAttributeSet = CreateDefaultSubobject<UARPGAttributeSet>(TEXT("ARPGAttributeSet"));
+}
+
+UAbilitySystemComponent* AARPGBaseCharacter::GetAbilitySystemComponent() const
+{
+	return GetARPGAbilitySystemComponent();
+}
+
+void AARPGBaseCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (ARPGAbilitySystemComponent)
+	{
+		ARPGAbilitySystemComponent->InitAbilityActorInfo(this, this);
+	}
 }
