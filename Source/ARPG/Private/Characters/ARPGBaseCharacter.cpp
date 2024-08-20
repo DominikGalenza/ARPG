@@ -30,5 +30,7 @@ void AARPGBaseCharacter::PossessedBy(AController* NewController)
 	if (ARPGAbilitySystemComponent)
 	{
 		ARPGAbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+		ensureMsgf(!CharacterStartupData.IsNull(), TEXT("Forgot to assign start-up data to %s"), *GetName());
 	}
 }

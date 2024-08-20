@@ -9,6 +9,7 @@
 
 class UARPGAbilitySystemComponent;
 class UARPGAttributeSet;
+class UDataAsset_StartupDatabase;
 
 UCLASS()
 class ARPG_API AARPGBaseCharacter : public ACharacter, public IAbilitySystemInterface
@@ -35,4 +36,7 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
 	UARPGAttributeSet* ARPGAttributeSet;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "CharacterData")
+	TSoftObjectPtr<UDataAsset_StartupDatabase> CharacterStartupData;
 };
