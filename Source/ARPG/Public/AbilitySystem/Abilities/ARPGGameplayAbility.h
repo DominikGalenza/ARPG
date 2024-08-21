@@ -6,6 +6,8 @@
 #include "Abilities/GameplayAbility.h"
 #include "ARPGGameplayAbility.generated.h"
 
+class UPawnCombatComponent;
+
 UENUM(BlueprintType)
 enum class EARPGAbilityActivationPolicy : uint8
 {
@@ -28,4 +30,7 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "ARPGAbility")
 	EARPGAbilityActivationPolicy AbilityActivationPolicy = EARPGAbilityActivationPolicy::OnTriggered;
+
+	UFUNCTION(BlueprintPure, Category = "ARPGAbility")
+	UPawnCombatComponent* GetPawnCombatComponentFromActorInfo() const;
 };
