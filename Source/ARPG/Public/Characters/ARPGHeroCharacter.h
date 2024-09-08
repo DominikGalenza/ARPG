@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Characters/ARPGBaseCharacter.h"
+#include "GameplayTagContainer.h"
 #include "ARPGHeroCharacter.generated.h"
 
 class USpringArmComponent;
@@ -23,6 +24,8 @@ class ARPG_API AARPGHeroCharacter : public AARPGBaseCharacter
 public:
 	AARPGHeroCharacter();
 
+	FORCEINLINE UHeroCombatComponent* GetHeroCombatComponent() const { return HeroCombatComponent; }
+
 protected:
 	//~ Begin APawn Interface.
 	virtual void PossessedBy(AController* NewController) override;
@@ -31,7 +34,6 @@ protected:
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	virtual void BeginPlay() override;
 
-	FORCEINLINE UHeroCombatComponent* GetHeroCombatComponent() const { return HeroCombatComponent; }
 private:
 #pragma region Components
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
@@ -50,5 +52,8 @@ private:
 
 	void Input_Move(const FInputActionValue& InputActionValue);
 	void Input_Look(const FInputActionValue& InputActionValue);
+
+	void Input_AbilityInputPressed(FGameplayTag InputTag);
+	void Input_AbilityInputReleased(FGameplayTag InputTag);
 #pragma endregion
 };

@@ -70,6 +70,8 @@ void AARPGHeroCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 	ARPGInputComponent->BindNativeInputAction(InputConfigDataAsset, ARPGGameplayTags::InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
 	ARPGInputComponent->BindNativeInputAction(InputConfigDataAsset, ARPGGameplayTags::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
+
+	ARPGInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
 }
 
 void AARPGHeroCharacter::BeginPlay()
@@ -108,4 +110,14 @@ void AARPGHeroCharacter::Input_Look(const FInputActionValue& InputActionValue)
 	{
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void AARPGHeroCharacter::Input_AbilityInputPressed(FGameplayTag InputTag)
+{
+	ARPGAbilitySystemComponent->OnAbilityInputPressed(InputTag);
+}
+
+void AARPGHeroCharacter::Input_AbilityInputReleased(FGameplayTag InputTag)
+{
+	ARPGAbilitySystemComponent->OnAbilityInputReleased(InputTag);
 }

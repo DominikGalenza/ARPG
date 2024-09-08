@@ -35,3 +35,8 @@ UPawnCombatComponent* UARPGGameplayAbility::GetPawnCombatComponentFromActorInfo(
 {
 	return GetAvatarActorFromActorInfo()->FindComponentByClass<UPawnCombatComponent>();
 }
+
+UARPGAbilitySystemComponent* UARPGGameplayAbility::GetARPGAbilitySystemComponentFromActorInfo() const
+{
+	return Cast<UARPGAbilitySystemComponent>(CurrentActorInfo->AbilitySystemComponent);
+}
