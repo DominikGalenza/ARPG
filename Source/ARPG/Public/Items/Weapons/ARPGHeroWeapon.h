@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Items/Weapons/ARPGWeaponBase.h"
+#include "ARPGTypes/ARPGStructTypes.h"
 #include "ARPGHeroWeapon.generated.h"
 
 /**
@@ -14,4 +15,7 @@ class ARPG_API AARPGHeroWeapon : public AARPGWeaponBase
 {
 	GENERATED_BODY()
 	
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WeaponData")
+	FARPGHeroWeaponData HeroWeaponData;
 };

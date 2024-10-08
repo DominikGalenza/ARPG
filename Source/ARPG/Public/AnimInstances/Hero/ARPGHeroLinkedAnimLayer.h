@@ -6,6 +6,7 @@
 #include "AnimInstances/ARPGBaseAnimInstance.h"
 #include "ARPGHeroLinkedAnimLayer.generated.h"
 
+class UARPGHeroAnimInstance;
 /**
  * 
  */
@@ -14,4 +15,7 @@ class ARPG_API UARPGHeroLinkedAnimLayer : public UARPGBaseAnimInstance
 {
 	GENERATED_BODY()
 	
+public:
+	UFUNCTION(BlueprintPure, meta = (BlueprintThreadSafe))
+	UARPGHeroAnimInstance* GetHeroAnimInstance() const;
 };

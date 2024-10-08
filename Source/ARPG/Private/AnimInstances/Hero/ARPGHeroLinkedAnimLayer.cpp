@@ -2,4 +2,9 @@
 
 
 #include "AnimInstances/Hero/ARPGHeroLinkedAnimLayer.h"
+#include "AnimInstances/Hero/ARPGHeroAnimInstance.h"
 
+UARPGHeroAnimInstance* UARPGHeroLinkedAnimLayer::GetHeroAnimInstance() const
+{
+    return Cast<UARPGHeroAnimInstance>(GetOwningComponent()->GetAnimInstance());
+;}
