@@ -5,11 +5,6 @@
 #include "AbilitySystem/Abilities/ARPGGameplayAbility.h"
 #include "AbilitySystem/ARPGAbilitySystemComponent.h"
 
-bool FARPGHeroAbilitySet::IsValid() const
-{
-    return InputTag.IsValid() && AbilityToGrant;
-}
-
 void UDataAsset_HeroStartupData::GiveToAbilitySystemComponent(UARPGAbilitySystemComponent* ASCToGive, int32 ApplyLevel)
 {
     Super::GiveToAbilitySystemComponent(ASCToGive, ApplyLevel);
